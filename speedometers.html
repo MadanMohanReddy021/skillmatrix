@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seven Speedometers</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+       
+        .speedometer-container {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 90px;
+    width: 100%;
+    justify-items: center;
+}
+        .speedometer {
+            position: relative;
+            width: 200px;
+            height: 100px;
+            overflow: hidden;
+            border-top-left-radius: 40%;
+            border-top-right-radius: 40%;
+
+        }
+
+        .semi-circle {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(
+                rgb(255, 2, 2) 180deg, 
+                rgb(255, 225, 0) 270deg,
+                rgb(13, 158, 0) 360deg
+            );
+            transform: rotate(90deg);
+        }
+        .needle {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            height: 90px;
+            background-color: rgb(64, 18, 18);
+            transform-origin: bottom center;
+            transform: rotate(-88deg); /* Default position */
+            transition: transform 1.5s ease-in-out;
+            z-index: 2;
+        }
+        .center {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background-color: black;
+            border-radius: 50%;
+            transform: translate(-50%, 50%);
+            z-index: 3;
+        }
+        .labels {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .labels span {
+            position: absolute;
+        }
+
+        .label-0 { left: 0; transform: translateY(88px); }
+        .label-10 { left: 5%; transform: translateY(60px); }
+        .label-20 { left: 15%; transform: translateY(30px); }
+        .label-30 { left: 28%; transform: translateY(8px); }
+        .label-40 { left: 48%; transform: translateY(0px); }
+        .label-50 { right: 28%; transform:translateY(8px) ; }
+        .label-60 { right: 15%; transform: translateY(30px); }
+        .label-70 { right: 5%; transform: translateY(60px); }
+        .label-80 { right: 0%; transform: translateY(88px); }
+   p{
+    margin-left: 45%;
+     transform: translateY(40px);
+     color:blue;
+   }
+   .hour
+   {
+    transform: translateY(40px);
+    margin-left: 5%;
+    color: rgb(255, 255, 255);
+   }
+   .h{
+    color:white;
+    transform: translateY(27px);
+    margin-left: 60%;
+   }
+   </style>
+</head>
+<body>
+    <div class="speedometer-container">
+        <!-- Speedometers (7 instances) -->
+        <div class="speedometer" id="speedometer1">
+            <div class="semi-circle"></div>
+            <div class="needle" id="needle1"></div>
+            <div class="center"></div>
+            <div class="labels">
+                <span class="label-0">0</span>
+                <span class="label-10">10</span>
+                <span class="label-20">20</span>
+                <span class="label-30">30</span>
+                <span class="label-40">40</span>
+                <span class="label-50">50</span>
+                <span class="label-60">60</span>
+                <span class="label-70">70</span>
+                <span class="label-80">80</span>
+                <p>line1&2</p>
+                <div class="hour">Completed hours:</div><div class="h" id="line12">1000 </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the same for speedometer2 to speedometer7 -->
+        <div class="speedometer" id="speedometer2">
+            <div class="semi-circle"></div>
+            <div class="needle" id="needle2"></div>
+            <div class="center"></div>
+            <div class="labels">
+                <span class="label-0">0</span>
+                <span class="label-10">10</span>
+                <span class="label-20">20</span>
+                <span class="label-30">30</span>
+                <span class="label-40">40</span>
+                <span class="label-50">50</span>
+                <span class="label-60">60</span>
+                <span class="label-70">70</span>
+                <span class="label-80">80</span>
+               
+                <p>line3</p>
+                <div class="hour">Completed hours:</div><div class="h" id="line3">1000 </div>
+
+            </div>
+        </div>
+
+        <div class="speedometer" id="speedometer3">
+            <div class="semi-circle"></div>
+            <div class="needle" id="needle3"></div>
+            <div class="center"></div>
+            <div class="labels">
+                <span class="label-0">0</span>
+                <span class="label-10">10</span>
+                <span class="label-20">20</span>
+                <span class="label-30">30</span>
+                <span class="label-40">40</span>
+                <span class="label-50">50</span>
+                <span class="label-60">60</span>
+                <span class="label-70">70</span>
+                <span class="label-80">80</span>
+               
+                <p>line4</p>
+                <div class="hour">Completed hours:</div><div class="h" id="line4">1000 </div>
+
+            </div>
+        </div>
+
+        <div class="speedometer" id="speedometer4">
+            <div class="semi-circle"></div>
+            <div class="needle" id="needle4"></div>
+            <div class="center"></div>
+            <div class="labels">
+                <span class="label-0">0</span>
+                <span class="label-10">10</span>
+                <span class="label-20">20</span>
+                <span class="label-30">30</span>
+                <span class="label-40">40</span>
+                <span class="label-50">50</span>
+                <span class="label-60">60</span>
+                <span class="label-70">70</span>
+                <span class="label-80">80</span>
+                
+                <p>line5</p>
+                <div class="hour">Completed hours:</div><div class="h" id="line5">1000 </div>
+
+            </div>
+        </div>
+
+        <div class="speedometer" id="speedometer5">
+            <div class="semi-circle"></div>
+            <div class="needle" id="needle5"></div>
+            <div class="center"></div>
+            <div class="labels">
+                <span class="label-0">0</span>
+                <span class="label-10">10</span>
+                <span class="label-20">20</span>
+                <span class="label-30">30</span>
+                <span class="label-40">40</span>
+                <span class="label-50">50</span>
+                <span class="label-60">60</span>
+                <span class="label-70">70</span>
+                <span class="label-80">80</span>
+               
+                <p>line6</p>
+                <div class="hour">Completed hours:</div><div class="h" id="line6">1000 </div>
+
+            </div>
+        </div>
+
+        <div class="speedometer" id="speedometer6">
+            <div class="semi-circle"></div>
+            <div class="needle" id="needle6"></div>
+            <div class="center"></div>
+            <div class="labels">
+                <span class="label-0">0</span>
+                <span class="label-10">10</span>
+                <span class="label-20">20</span>
+                <span class="label-30">30</span>
+                <span class="label-40">40</span>
+                <span class="label-50">50</span>
+                <span class="label-60">60</span>
+                <span class="label-70">70</span>
+                <span class="label-80">80</span>
+               
+                <p>line7</p>
+                <div class="hour">Completed hours:</div><div class="h" id="line7">1000 </div>
+
+            </div>
+        </div>
+
+        
+
+    </div>
+<Script>
+    htargets={};
+    var lines=["line12","line3","line4","line5","line6","line7"];
+    let speedometers = {
+    "line12": "speedometer1",
+    "line3": "speedometer2",
+    "line4": "speedometer3",
+    "line5": "speedometer4",
+    "line6": "speedometer5",
+    "line7": "speedometer6"
+};
+     
+
+   fetch('gettarget.php')
+      .then(response => response.json()) 
+      .then(data => {
+        lines.forEach(element => {
+                        const htarget = data[element]; 
+                        htargets[element]=htarget*8;
+                        const speedometer = document.getElementById(speedometers[element]);
+                        const label0 = speedometer.querySelector('.label-0');
+        const label10 = speedometer.querySelector('.label-10');
+        const label20 = speedometer.querySelector('.label-20');
+        const label30 = speedometer.querySelector('.label-30');
+        const label40 = speedometer.querySelector('.label-40');
+        const label50 = speedometer.querySelector('.label-50');
+        const label60 = speedometer.querySelector('.label-60');
+        const label70 = speedometer.querySelector('.label-70');
+        const label80 = speedometer.querySelector('.label-80');
+
+        label0.textContent = 0;
+        label10.textContent =parseInt(htarget);
+        label20.textContent =parseInt(htarget*2);
+        label30.textContent =parseInt(htarget*3);
+        label40.textContent =parseInt(htarget*4);
+        label50.textContent =parseInt(htarget*5);
+        label60.textContent =parseInt(htarget*6);
+        label70.textContent =parseInt(htarget*7);
+        label80.textContent =parseInt(htarget*8);
+                    });
+        
+        
+        
+       
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+</Script>
+    <script>
+        var lines=["line12","line3","line4","line5","line6","line7"];
+        let speedometerDictionary = {
+    "line12": "needle1",
+    "line3": "needle2",
+    "line4": "needle3",
+    "line5": "needle4",
+    "line6": "needle5",
+    "line7": "needle6"
+};
+        function updateSpeedometers() {
+
+            fetch('getspeed.php') 
+                .then(response => response.json())
+                .then(data => {
+                console.log(data);
+                    lines.forEach(element => {
+                        const completed = data[0][element]; 
+                        const nohours=data[1][element];
+                        document.getElementById(element).innerText = nohours;
+
+                        const target=htargets[element];
+                        let eff=completed/((htargets[element]/8)*nohours);
+                        
+                        console.log(completed);
+                        
+                        if(eff<=0.50)
+                    {
+                        document.getElementById(speedometers[element]).style.backgroundColor='red';
+                    }
+                    else if(eff<=0.90)
+                    {
+                        document.getElementById(speedometers[element]).style.backgroundColor='orange';
+                    }
+                    else{
+                        document.getElementById(speedometers[element]).style.backgroundColor='green';
+                    }
+                        const rotation = mapSpeedToRotation(completed,target);
+                        document.getElementById(speedometerDictionary[element]).style.transform = `rotate(${rotation}deg)`;
+                        
+                    });
+                })
+                .catch(error => console.error("Error fetching data:", error));
+        }
+
+        // Map speed (0-100) to rotation (-90 to 90 degrees)
+        function mapSpeedToRotation(speed,target) {
+            const minSpeed = 0, maxSpeed = target;
+            const minRotation = -90, maxRotation = 90;
+            return minRotation + (speed) * (maxRotation - minRotation) / (maxSpeed);
+        }
+
+        updateSpeedometers();
+    </script>
+</body>
+</html>

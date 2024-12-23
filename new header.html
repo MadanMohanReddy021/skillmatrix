@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header with Colors</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #004d99; 
+      border-bottom: 3px solid #ffa500; 
+      flex-wrap: wrap; /* Allow elements to wrap on smaller screens */
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      flex: 1; /* Make the logo container flexible */
+    }
+
+    .logo {
+      height: 100px; 
+      margin-right: 15px;
+    }
+
+    h1 {
+      font-weight: bold;
+      color: #ffffff; 
+      font-size: 24px; /* Adjust font size */
+    }
+
+    .project-name {
+      font-size: 24px; 
+      font-weight: bold;
+      color: #e9af11; 
+      text-align: center;
+      margin: 10px 0; /* Adjust spacing for mobile */
+      flex: 1; /* Allow this section to grow */
+    }
+
+    /* Style for buttons */
+    .button {
+      background-color: #004d99; /* Dark blue */
+      color: white;
+      font-size: 16px;
+      padding: 10px 20px;
+      margin-left: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    .button:hover {
+      background-color: #003366; /* Slightly darker blue for hover effect */
+    }
+
+    .button-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .logo {
+        height: 80px; 
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      .project-name {
+        font-size: 20px;
+      }
+
+      .button-container {
+        flex-direction: column; 
+        justify-content: center;
+        margin-top: 15px;
+      }
+
+      .button {
+        margin-left: 0; 
+        margin-bottom: 10px;
+        width: 100%; 
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 18px; 
+      }
+
+      .project-name {
+        font-size: 18px;
+      }
+
+      .logo {
+        height: 60px; 
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo-container">
+      <img src="th.jpeg" alt="Logo" class="logo">
+      <h1>Aditya Birla Garments Limited</h1>
+    </div>
+    
+    <div class="button-container">
+      <a href="hpbuttons.html" target="sideframe"><button class="button">Hourly Production</button></a>
+      <a href="blbuttons.html" target="sideframe"><button class="button">Balance Line</button></a>
+      <a href="gdbuttons.html" target="sideframe"><button class="button">Get Details</button></a>
+      <a href="mbuttons.html" target="sideframe"><button class="button">Modify</button></a>
+    </div>
+    <div class="project-name">
+        Skill Tracker
+      </div>
+  </header>
+</body>
+</html>

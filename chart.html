@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Target vs Completed</title>
+    <script src="chartlib.js"></script>
+    <style>
+        select{
+         width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+       
+        border-radius: 5px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s;
+        }
+        select:focus{
+            border:1px solid rgb(2, 188, 255);
+            box-shadow: 0px 5px 10px;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div style="width: 70%; margin: auto; padding-top: 50px;">
+        <!-- Dropdown for selecting line -->
+        <label for="lineSelect">Select Line:</label>
+        <select id="lineSelect">
+            <option value="">--Select a Line--</option>
+            <option value="line12">Line 12</option>
+            <option value="line3">Line 3</option>
+            <option value="line4">Line 4</option>
+            <option value="line5">Line 5</option>
+            <option value="line6">Line 6</option>
+            <option value="line7">Line 7</option>
+        </select>
+        
+        <canvas id="myBarChart"></canvas>
+    </div>
+
+    <script>// Declare the chart variable outside the fetchData function to reuse it
+        let myBarChart;
+        
+        function fetchData(line) {
+            let url = 'getchartdata.php';
+            if (line) {
+                url += `?line=${line}`; // Append the line as a query parameter
+            }
+        
+            // Fetch the data from the PHP backend
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    // Extract the data for the chart
+                    const labels = data.map(item => item.date); // Dates for x-axis
+                    const targets = data.map(item => item.target); // Target values
+                    const completed = data.map(item => item.completed); // Completed values
+        
+                    // Destroy the previous chart if it exists
+                    if (myBarChart) {
+                        myBarChart.destroy();
+                    }
+        
+                    // Create the new chart
+                    const ctx = document.getElementById('myBarChart').getContext('2d');
+                    myBarChart = new Chart(ctx, {
+                        type: 'bar', // Bar chart type
+                        data: {
+                            labels: labels, // Dates on x-axis
+                            datasets: [
+                                {
+                                    label: 'Target', // Label for Target dataset
+                                    data: targets, // Target values
+                                    backgroundColor: 'rgb(2, 48, 250,0.5)', // Color for Target bars
+                                    borderColor: 'rgba(54, 162, 235, 1)',
+                                    borderWidth: 1
+                                },
+                                {
+                                    label: 'Completed', // Label for Completed dataset
+                                    data: completed, // Completed values
+                                    backgroundColor: 'rgb(255, 2, 251,0.5)', // Color for Completed bars
+                                    borderColor: 'rgba(75, 192, 192, 1)',
+                                    borderWidth: 1
+                                }
+                            ]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true // Ensure the y-axis starts at 0
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+        
+        // Event listener for when the dropdown selection changes
+        document.getElementById('lineSelect').addEventListener('change', function() {
+            const selectedLine = this.value;
+            fetchData(selectedLine); // Fetch data for the selected line
+        });
+        
+        
+        
+        
+    </script>
+</body>
+</html>

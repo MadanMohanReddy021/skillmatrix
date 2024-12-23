@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style>
+   body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    padding: 5px;
+    background-color: #333;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: slideIn 1s ease-out;
+}
+
+header img {
+    max-width: 110px;  /* Reduced logo size for small screens */
+  
+    height:80px
+}
+
+h1 {
+    margin: 0;
+    
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* Container Styling */
+.container {
+    width: 80%;
+    margin: 20px auto;
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Section Styling */
+.section {
+   
+    
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    opacity: 0;
+    animation: fadeUp 0.8s forwards;
+}
+
+/* Hover effect for section */
+.section:hover {
+    transform: translateY(30px); /* Slightly smaller hover effect */
+}
+
+/* Section Heading */
+.section h2 {
+    text-align: center;
+    color: #333;
+    font-size: 1.5rem;  /* Reduced font size */
+    margin-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Button Container Flex Layout */
+.one-button-container,
+.one-buttons-container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    gap: 10px;  
+    margin-top: 20px;
+}
+
+
+.button {
+    padding: 12px 24px; /* Reduced padding for smaller buttons */
+    font-size: 14px;  /* Smaller font size for better fit */
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    margin: 5px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: bounceIn 1s ease-in-out;
+}
+
+/* Button Hover Effect */
+.button:hover {
+    background-color: #45a049;
+    transform: translateY(-4px); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+}
+
+/* Button Active State */
+.button:active {
+    background-color: #388E3C;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transform: scale(0.98);
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Keyframes for Animations */
+@keyframes slideIn {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Optimizations for small screens */
+@media (max-width: 768px) {
+    /* Header adjustments */
+    header img {
+        max-width: 120px; /* Smaller logo for small screens */
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Smaller heading size */
+    }
+
+    /* Container width adjustments */
+    .container {
+        width: 90%; /* Take more width on small screens */
+    }
+
+    /* Section padding and margins adjustments */
+    .section {
+        padding: 15px; 
+        margin: 15px 0; /* Reduce margin */
+    }
+
+    .section h2 {
+        font-size: 1.5rem; /* Slightly smaller headings */
+    }
+
+    /* Button adjustments */
+    .button {
+        width: 100%;
+        max-width: 280px;
+        font-size: 14px; 
+    }
+
+    /* Button container adjustments */
+    .one-button-container,
+    .one-buttons-container {
+        flex-direction: column; 
+        gap: 15px; 
+    }
+}
+
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="heads"></div> 
+         <img src="th.jpeg" alt="Aditya Birla Garments Logo">
+         <h1>ADITYA BIRLA GARMENTS LIMITED</h1>
+         <a href="hpbuttons.html" target="sideframe"><button class="button"> Hourly Production</button></a>
+        <a href="blbuttons.html" target="sideframe"><button class="button"> Balance Line</button></a>
+        <a href="gdbuttons.html" target="sideframe"><button class="button"> Get Details</button></a>
+        <a href="mbuttons.html" target="sideframe"><button class="button"> Modify</button></a>
+     </div>
+     </header>
+     <div>
+        
+     </div>
+</body>
+</html>

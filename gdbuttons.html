@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            animation: fadeIn 1.5s ease-out;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        p {
+            width: 100%;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #004d99; /* Dark blue for buttons */
+            color: white;
+            font-size: 16px;
+            padding: 12px 30px;
+            margin-left: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: bounceIn 1s ease-in-out;
+            margin: 5px;
+            transition: background-color 0.3s, transform 0.3s ease-in-out, box-shadow 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #003366; /* Darker blue on hover */
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+        }
+
+        .button:active {
+            background-color: #388E3C;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); 
+            transform: scale(0.98); 
+        }
+
+        .button.active {
+            background-color: #09310b;
+            color: white;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            .button {
+                width: 100%;
+                max-width: 250px;
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            p {
+                font-size: 1rem; /* Smaller text on very small screens */
+            }
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <p><big>Get details</big></p>
+
+        <!-- Buttons with an onclick handler for highlighting -->
+        <a href="getskills.php" target="mainframe">
+            <button class="button" onclick="changeColor(this)">Skill in 1 operation</button>
+        </a>
+        <a href="allskills.php" target="mainframe">
+            <button class="button" onclick="changeColor(this)">All skills</button>
+        </a>
+        <a href="hourly.php" target="mainframe">
+            <button class="button" onclick="changeColor(this)">Hourly Production</button>
+        </a>
+        <a href="speedometers.html" target="mainframe">
+            <button class="button" onclick="changeColor(this)">Line-wise Efficiency</button>
+        </a>
+        <a href="chart.html" target="mainframe">
+            <button class="button" onclick="changeColor(this)">Analytics</button>
+        </a>
+    </div>
+
+    <script>
+        // Function to highlight the clicked button
+        function changeColor(clickedButton) {
+            // Get all buttons in the container
+            var buttons = document.querySelectorAll('.button');
+
+            // Remove the 'active' class from all buttons
+            buttons.forEach(function(button) {
+                button.classList.remove('active');
+            });
+
+            // Add the 'active' class to the clicked button
+            clickedButton.classList.add('active');
+        }
+    </script>
+</body>
+</html>
